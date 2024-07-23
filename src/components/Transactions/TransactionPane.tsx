@@ -8,6 +8,14 @@ export const TransactionPane: TransactionPaneComponent = ({
   setTransactionApproval: consumerSetTransactionApproval,
 }) => {
   const [approved, setApproved] = useState(transaction.approved)
+  const handleInputChange = async (newValue: boolean) => {
+    console.log("calling the change with newValue:", newValue)
+    setApproved(newValue)
+    // await consumerSetTransactionApproval({
+    //   transactionId: transaction.id,
+    //   newValue,
+    // })
+  }
 
   return (
     <div className="RampPane">
@@ -22,13 +30,9 @@ export const TransactionPane: TransactionPaneComponent = ({
         id={transaction.id}
         checked={approved}
         disabled={loading}
-        onChange={async (newValue) => {
-          await consumerSetTransactionApproval({
-            transactionId: transaction.id,
-            newValue,
-          })
-
-          setApproved(newValue)
+        onChange={(newValue) => {
+          console.log("InputCheckbox onChange called with newValue:", newValue)
+          handleInputChange(newValue)
         }}
       />
     </div>
