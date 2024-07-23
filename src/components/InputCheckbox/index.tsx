@@ -2,7 +2,7 @@ import classNames from "classnames"
 import { useRef } from "react"
 import { InputCheckboxComponent } from "./types"
 
-export const InputCheckbox: InputCheckboxComponent = ({ id, checked, disabled, onChange}) => {
+export const InputCheckbox: InputCheckboxComponent = ({ id, checked, disabled, onChange }) => {
   const { current: inputId } = useRef(`RampInputCheckbox-${id}`)
 
   return (
@@ -16,10 +16,16 @@ export const InputCheckbox: InputCheckboxComponent = ({ id, checked, disabled, o
       <input
         id={inputId}
         type="checkbox"
-        className="RampInputCheckbox--input"
+        className={classNames("RampInputCheckbox--input", {
+          "RampInputCheckbox--input-checked": checked,
+          "RampInputCheckbox--input-disabled": disabled,
+        })}
         checked={checked}
         disabled={disabled}
-        onChange={() => onChange(!checked)}
+        onChange={() => {
+          console.log("calling this function")
+          onChange(!checked)
+        }}
       />
     </div>
   )
