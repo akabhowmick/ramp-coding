@@ -1,0 +1,4 @@
+Bug #1 =>
+
+Bug#2 => 
+  change the index.css so that the label is hidden and the input itself changes when it is checked off. 

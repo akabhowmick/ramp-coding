@@ -9,12 +9,11 @@ export const TransactionPane: TransactionPaneComponent = ({
 }) => {
   const [approved, setApproved] = useState(transaction.approved)
   const handleInputChange = async (newValue: boolean) => {
-    console.log("calling the change with newValue:", newValue)
     setApproved(newValue)
-    // await consumerSetTransactionApproval({
-    //   transactionId: transaction.id,
-    //   newValue,
-    // })
+    await consumerSetTransactionApproval({
+      transactionId: transaction.id,
+      newValue,
+    })
   }
 
   return (
