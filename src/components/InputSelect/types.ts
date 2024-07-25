@@ -1,6 +1,8 @@
 export type InputSelectItem = { label: string; value: string }
 
 export type InputSelectProps<TItem> = {
+  inputRef?: React.RefObject<HTMLInputElement>;
+  dropdownRef?: React.RefObject<HTMLDivElement>;
   label: string
   defaultValue?: TItem | null
   onChange: (value: TItem | null) => void
