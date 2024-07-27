@@ -24,8 +24,8 @@ export const getTransactionsPaginated = ({
     throw new Error("Page cannot be null")
   }
 
-  const start = page * TRANSACTIONS_PER_PAGE
-  const end = start + TRANSACTIONS_PER_PAGE
+  const start = 0
+  const end = page * TRANSACTIONS_PER_PAGE + TRANSACTIONS_PER_PAGE
 
   if (start > data.transactions.length) {
     throw new Error(`Invalid page ${page}`)
@@ -35,7 +35,7 @@ export const getTransactionsPaginated = ({
 
   return {
     nextPage,
-    //make the changes here 
+    //make the changes here
     data: data.transactions.slice(start, end),
   }
 }
