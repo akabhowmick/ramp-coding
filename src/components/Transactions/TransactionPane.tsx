@@ -1,17 +1,22 @@
 import { useState } from "react"
 import { InputCheckbox } from "../InputCheckbox"
-import { TransactionPaneComponent } from "./types"
+import { SetTransactionApprovalFunction, TransactionPaneComponent } from "./types"
+import { Transaction } from "src/utils/types"
 
 export const TransactionPane: TransactionPaneComponent = ({
   transaction,
   loading,
-  setTransactionApproval: consumerSetTransactionApproval,
+  setTransactionApproval,
+}: {
+  transaction: Transaction
+  loading: boolean
+  setTransactionApproval: SetTransactionApprovalFunction
 }) => {
   const [approved, setApproved] = useState(transaction.approved)
-  const handleInputChange = async (newValue: boolean) => {
+  const handleInputChange = async (transactionId: string, newValue: boolean) => {
     setApproved(newValue)
-    await consumerSetTransactionApproval({
-      transactionId: transaction.id,
+    await setTransactionApproval({
+      transactionId,
       newValue,
     })
   }
@@ -30,8 +35,7 @@ export const TransactionPane: TransactionPaneComponent = ({
         checked={approved}
         disabled={loading}
         onChange={(newValue) => {
-          console.log("InputCheckbox onChange called with newValue:", newValue)
-          handleInputChange(newValue)
+          handleInputChange(transaction.id, newValue)
         }}
       />
     </div>
