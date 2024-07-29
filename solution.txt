@@ -1,8 +1,0 @@
-Bug #1 =>
-
-Bug#2 => 
-  change the index.css so that the label is hidden and the input itself changes when it is checked off. 
-
-Bug #3 =>
-  comment out the line "throw new Error("Employee id cannot be empty")"
-  

@@ -21,7 +21,6 @@ export const getTransactionsPaginated = ({
   page,
 }: PaginatedRequestParams): PaginatedResponse<Transaction[]> => {
   if (page === null) {
-    console.log("No Paginated")
     throw new Error("Page cannot be null")
   }
 
@@ -50,7 +49,6 @@ export const getTransactionsByEmployee = ({ employeeId }: RequestByEmployeeParam
 }
 
 export const setTransactionApproval = ({ transactionId, value }: SetTransactionApprovalParams): void => {
-  console.log(`setTransactionApproval`)
   const transaction = data.transactions.find(
     (currentTransaction) => currentTransaction.id === transactionId
   )
