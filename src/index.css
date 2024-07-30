@@ -81,6 +81,10 @@ hr.RampBreak--l {
 
 .RampInputSelect--root {
   width: 100%;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: white;
 }
 
 .RampInputSelect--input {
